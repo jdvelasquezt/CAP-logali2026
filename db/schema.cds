@@ -68,8 +68,3 @@ entity SalesData {
     key DeliveryDate : DateTime;
         Revenue      : Decimal(16, 2);
 }
-
-entity SalesDatar {
-    key DeliveryDate : DateTime;
-        Revenue      : Decimal(16, 2);
-}
