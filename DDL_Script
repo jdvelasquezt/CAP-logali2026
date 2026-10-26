@@ -1,0 +1,397 @@
+
+CREATE TABLE cap_logali_Orders (
+  ID NVARCHAR(36) NOT NULL,
+  Date DATE_TEXT,
+  Customer NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_OrderItems (
+  ID NVARCHAR(36) NOT NULL,
+  Order_ID NVARCHAR(36),
+  Product_ID NVARCHAR(36),
+  Quantity INTEGER,
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Products (
+  ID NVARCHAR(36) NOT NULL,
+  Name NVARCHAR(255) DEFAULT 'NoNAme',
+  Description NVARCHAR(255),
+  ImageUrl NVARCHAR(255),
+  ReleaseDate DATE_TEXT,
+  DiscontinuedDate DATE_TEXT DEFAULT CURRENT_TIMESTAMP,
+  Price DECIMAL(16, 2) NOT NULL,
+  Height DECIMAL(16, 2) NOT NULL,
+  Width DECIMAL(16, 2),
+  Depth DECIMAL(16, 2),
+  Quantity DECIMAL(16, 2),
+  Supplier_ID NVARCHAR(36),
+  UnitOfMeasure_Id NVARCHAR(2),
+  Currency_ID NVARCHAR(3),
+  DimensionUnit_ID NVARCHAR(2),
+  Category_ID NVARCHAR(1),
+  PriceCondition NVARCHAR(2),
+  PriceDetermination NVARCHAR(3),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Suppliers (
+  ID NVARCHAR(36) NOT NULL,
+  createdAt TIMESTAMP_TEXT,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP_TEXT,
+  modifiedBy NVARCHAR(255),
+  Name NVARCHAR(255),
+  Street NVARCHAR(255) DEFAULT 'NoNAme',
+  City NVARCHAR(255),
+  State NVARCHAR(2),
+  PostalCode NVARCHAR(5),
+  Country NVARCHAR(3),
+  Email NVARCHAR(255),
+  Phone NVARCHAR(255),
+  Fax NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_UnitOfMeasure (
+  ID NVARCHAR(2) NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_UnitOfMeasure_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID NVARCHAR(2) NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_Currencies (
+  ID NVARCHAR(3) NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Currencies_texts (
+  locale NVARCHAR(14) NOT NULL, 
+  ID NVARCHAR(3) NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_DimensionsUnits (
+  ID NVARCHAR(2) NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_DimensionsUnits_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID NVARCHAR(2) NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_Categories (
+  ID NVARCHAR(1) NOT NULL,
+  Name NVARCHAR(255),
+  Status INTEGER,
+  Priority NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Categories_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID NVARCHAR(1) NOT NULL,
+  Name NVARCHAR(255),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_SalesData (
+  createdAt TIMESTAMP_TEXT,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP_TEXT,
+  modifiedBy NVARCHAR(255),
+  ID NVARCHAR(36) NOT NULL,
+  DeliveryDate DATETIME_TEXT,
+  Revenue DECIMAL(16, 2),
+  Product_ID NVARCHAR(36),
+  Currency_ID NVARCHAR(3),
+  DeliveryMonth_ID NVARCHAR(2),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Months (
+  ID NVARCHAR(2) NOT NULL,
+  Description NVARCHAR(255),
+  ShortDescription NVARCHAR(3),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Months_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID NVARCHAR(2) NOT NULL,
+  Description NVARCHAR(255),
+  ShortDescription NVARCHAR(3),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_ProductReview (
+  createdAt TIMESTAMP_TEXT,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP_TEXT,
+  modifiedBy NVARCHAR(255),
+  ID NVARCHAR(36) NOT NULL,
+  Name NVARCHAR(255),
+  Rating INTEGER,
+  Comment NVARCHAR(255),
+  Product_ID NVARCHAR(36),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Products_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID NVARCHAR(36) NOT NULL,
+  Name NVARCHAR(255) DEFAULT 'NoNAme',
+  Description NVARCHAR(255),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_Car (
+  ID NVARCHAR(36) NOT NULL,
+  Name NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_Suppliers_01 (
+  ID NVARCHAR(36) NOT NULL,
+  Name NVARCHAR(255),
+  Address_Street NVARCHAR(255),
+  Address_City NVARCHAR(255),
+  Address_State NVARCHAR(2),
+  Address_PostalCode NVARCHAR(5),
+  Address_Country NVARCHAR(3),
+  Email NVARCHAR(255),
+  Phone NVARCHAR(255),
+  Fax NVARCHAR(255),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_StockAvailability (
+  ID INTEGER NOT NULL,
+  Description NVARCHAR(255),
+  Product_ID NVARCHAR(36),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE cap_logali_StockAvailability_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID INTEGER NOT NULL,
+  Description NVARCHAR(255),
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE TABLE cap_logali_Suppliers_texts (
+  locale NVARCHAR(14) NOT NULL,
+  ID NVARCHAR(36) NOT NULL,
+  Street NVARCHAR(255) DEFAULT 'NoNAme',
+  PRIMARY KEY(locale, ID)
+);
+
+CREATE VIEW cap_logali_SelProducts AS SELECT
+  Products_0.ID,
+  Products_0.Name,
+  Products_0.Description,
+  Products_0.ImageUrl,
+  Products_0.ReleaseDate,
+  Products_0.DiscontinuedDate,
+  Products_0.Price,
+  Products_0.Height,
+  Products_0.Width,
+  Products_0.Depth,
+  Products_0.Quantity,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_Id,
+  Products_0.Currency_ID,
+  Products_0.DimensionUnit_ID,
+  Products_0.Category_ID,
+  Products_0.PriceCondition,
+  Products_0.PriceDetermination
+FROM cap_logali_Products AS Products_0;
+
+CREATE VIEW cap_logali_SelProducts1 AS SELECT
+  Products_0.Name,
+  Products_0.Price,
+  Products_0.Quantity
+FROM cap_logali_Products AS Products_0;
+
+CREATE VIEW cap_logali_SelProducts2 AS SELECT
+  ProductReview_1.Rating,
+  Products_0.Name,
+  sum(Products_0.Price) AS TotalPrice
+FROM (cap_logali_Products AS Products_0 LEFT JOIN cap_logali_ProductReview AS ProductReview_1 ON Products_0.Name = ProductReview_1.Name)
+GROUP BY ProductReview_1.Rating, Products_0.Name
+ORDER BY Rating DESC;
+
+CREATE VIEW cap_logali_ProjProducts AS SELECT
+  Products_0.ID,
+  Products_0.Name,
+  Products_0.Description,
+  Products_0.ImageUrl,
+  Products_0.ReleaseDate,
+  Products_0.DiscontinuedDate,
+  Products_0.Price,
+  Products_0.Height,
+  Products_0.Width,
+  Products_0.Depth,
+  Products_0.Quantity,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_Id,
+  Products_0.Currency_ID,
+  Products_0.DimensionUnit_ID,
+  Products_0.Category_ID,
+  Products_0.PriceCondition,
+  Products_0.PriceDetermination
+FROM cap_logali_Products AS Products_0;
+
+CREATE VIEW cap_logali_ProjProducts2 AS SELECT
+  Products_0.Name,
+  Products_0.ID,
+  Products_0.Quantity
+FROM cap_logali_Products AS Products_0;
+
+CREATE VIEW localized_cap_logali_Products AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Name, L_0.Name) AS Name,
+  coalesce(localized_1.Description, L_0.Description) AS Description,
+  L_0.ImageUrl,
+  L_0.ReleaseDate,
+  L_0.DiscontinuedDate,
+  L_0.Price,
+  L_0.Height,
+  L_0.Width,
+  L_0.Depth,
+  L_0.Quantity,
+  L_0.Supplier_ID,
+  L_0.UnitOfMeasure_Id,
+  L_0.Currency_ID,
+  L_0.DimensionUnit_ID,
+  L_0.Category_ID,
+  L_0.PriceCondition,
+  L_0.PriceDetermination
+FROM (cap_logali_Products AS L_0 LEFT JOIN cap_logali_Products_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_Suppliers AS SELECT
+  L_0.ID,
+  L_0.createdAt,
+  L_0.createdBy,
+  L_0.modifiedAt,
+  L_0.modifiedBy,
+  L_0.Name,
+  coalesce(localized_1.Street, L_0.Street) AS Street,
+  L_0.City,
+  L_0.State,
+  L_0.PostalCode,
+  L_0.Country,
+  L_0.Email,
+  L_0.Phone,
+  L_0.Fax
+FROM (cap_logali_Suppliers AS L_0 LEFT JOIN cap_logali_Suppliers_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_UnitOfMeasure AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Description, L_0.Description) AS Description
+FROM (cap_logali_UnitOfMeasure AS L_0 LEFT JOIN cap_logali_UnitOfMeasure_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_Currencies AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Description, L_0.Description) AS Description
+FROM (cap_logali_Currencies AS L_0 LEFT JOIN cap_logali_Currencies_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_DimensionsUnits AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Description, L_0.Description) AS Description
+FROM (cap_logali_DimensionsUnits AS L_0 LEFT JOIN cap_logali_DimensionsUnits_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_Categories AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Name, L_0.Name) AS Name,
+  L_0.Status,
+  L_0.Priority
+FROM (cap_logali_Categories AS L_0 LEFT JOIN cap_logali_Categories_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_Months AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Description, L_0.Description) AS Description,
+  coalesce(localized_1.ShortDescription, L_0.ShortDescription) AS ShortDescription
+FROM (cap_logali_Months AS L_0 LEFT JOIN cap_logali_Months_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_StockAvailability AS SELECT
+  L_0.ID,
+  coalesce(localized_1.Description, L_0.Description) AS Description,
+  L_0.Product_ID
+FROM (cap_logali_StockAvailability AS L_0 LEFT JOIN cap_logali_StockAvailability_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = session_context( '$user.locale' ));
+
+CREATE VIEW localized_cap_logali_SelProducts AS SELECT
+  Products_0.ID,
+  Products_0.Name,
+  Products_0.Description,
+  Products_0.ImageUrl,
+  Products_0.ReleaseDate,
+  Products_0.DiscontinuedDate,
+  Products_0.Price,
+  Products_0.Height,
+  Products_0.Width,
+  Products_0.Depth,
+  Products_0.Quantity,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_Id,
+  Products_0.Currency_ID,
+  Products_0.DimensionUnit_ID,
+  Products_0.Category_ID,
+  Products_0.PriceCondition,
+  Products_0.PriceDetermination
+FROM localized_cap_logali_Products AS Products_0;
+
+CREATE VIEW localized_cap_logali_SelProducts1 AS SELECT
+  Products_0.Name,
+  Products_0.Price,
+  Products_0.Quantity
+FROM localized_cap_logali_Products AS Products_0;
+
+CREATE VIEW localized_cap_logali_SelProducts2 AS SELECT
+  ProductReview_1.Rating,
+  Products_0.Name,
+  sum(Products_0.Price) AS TotalPrice
+FROM (localized_cap_logali_Products AS Products_0 LEFT JOIN cap_logali_ProductReview AS ProductReview_1 ON Products_0.Name = ProductReview_1.Name)
+GROUP BY ProductReview_1.Rating, Products_0.Name
+ORDER BY Rating DESC;
+
+CREATE VIEW localized_cap_logali_ProjProducts AS SELECT
+  Products_0.ID,
+  Products_0.Name,
+  Products_0.Description,
+  Products_0.ImageUrl,
+  Products_0.ReleaseDate,
+  Products_0.DiscontinuedDate,
+  Products_0.Price,
+  Products_0.Height,
+  Products_0.Width,
+  Products_0.Depth,
+  Products_0.Quantity,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_Id,
+  Products_0.Currency_ID,
+  Products_0.DimensionUnit_ID,
+  Products_0.Category_ID,
+  Products_0.PriceCondition,
+  Products_0.PriceDetermination
+FROM localized_cap_logali_Products AS Products_0;
+
+CREATE VIEW localized_cap_logali_ProjProducts2 AS SELECT
+  Products_0.Name,
+  Products_0.ID,
+  Products_0.Quantity
+FROM localized_cap_logali_Products AS Products_0;
+

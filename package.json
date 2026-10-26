@@ -1,14 +1,15 @@
 {
-  "name": "products",
-  "version": "1.0.0",
-  "dependencies": {
-    "@sap/cds": "^9"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^2.4"
-  },
-  "scripts": {
-    "start": "cds watch"
-  },
-  "private": true
+	"name": "products",
+	"version": "1.0.0",
+	"dependencies": {
+		"@sap/cds": "^9"
+	},
+	"devDependencies": {
+		"@cap-js/sqlite": "^2.4",
+		"@sap/dev-cap-tools": "^1.31.0"
+	},
+	"scripts": {
+		"start": "cds watch"
+	},
+	"private": true
 }
